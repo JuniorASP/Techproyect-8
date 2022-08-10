@@ -7,18 +7,16 @@ const modalContainer = document.querySelector(".modal-content");
 const modalClose = document.querySelector(".modal-close");
 let openModal;
 
-/* ======================================================= */
 /*                Getting Info From API                    */
-/* ======================================================= */
+
 fetch(urlAPI)
   .then((res) => res.json())
   .then((res) => res.results)
   .then(displayEmployees)
   .catch((err) => console.log(err));
 
-/* ======================================================= */
 /*                   Displaying Info                       */
-/* ======================================================= */
+
 function displayEmployees(employeeData) {
   employees = employeeData;
   let employeeHTML = "";
@@ -43,9 +41,9 @@ function displayEmployees(employeeData) {
     let [] = employees;
 };
 
-/* ======================================================= */
+
 /*                         Modal                           */
-/* ======================================================= */
+
 function displayModal(index) {
   let { name, dob, phone, email, location: {city, street, state, postcode }, picture } = employees[index];
 
@@ -70,9 +68,7 @@ function displayModal(index) {
   `;
     overlay.classList.remove("hidden");
     modalContainer.innerHTML = modalHTML;
-                      /* ======== */
-                      /*  Switch  */
-                      /* ======== */
+                      
   const arrowContainer = document.querySelector('.arrow-container');
 
   arrowContainer.addEventListener('click', e => {
@@ -87,9 +83,8 @@ function displayModal(index) {
   })  
 };
 
-/* ======================================================= */
 /*                   Event Listener                        */
-/* ======================================================= */
+
 gridContainer.addEventListener('click', e => {
   const card = e.target.closest(".card");
   const index = card.getAttribute('data-index');
@@ -99,16 +94,14 @@ gridContainer.addEventListener('click', e => {
   }
 });
 
-/* ======================================================= */
 /*                      Close Modal                        */
-/* ======================================================= */
+
 modalClose.addEventListener('click', () => {
   overlay.classList.add('hidden')
 });
 
-/* ======================================================= */
 /*                     Employee Filter                     */
-/* ======================================================= */
+
 let inputLog = document.getElementById('employee-search');
 inputLog.addEventListener('keyup', filterNames)
 
