@@ -10,8 +10,12 @@ let openModal;
 /*                Getting Info From API                    */
 
 fetch(urlAPI)
-  .then((res) => res.json())
-  .then((res) => res.results)
+  .then((res) => { 
+    // console.log(res.json());
+    return res.json()})
+  .then((res) => {
+    console.log(res);
+    return res.results})
   .then(displayEmployees)
   .catch((err) => console.log(err));
 
